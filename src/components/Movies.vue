@@ -1,5 +1,5 @@
 <template>
-  <div class="movies">
+  <div class="movies" v-if="moviesFiltered !== ''">
       <Movie v-for="movie, i in filteredMovies" :key="i" :details="movie" />
   </div>
 </template>
@@ -16,7 +16,8 @@ export default {
   },
 
   props: {
-      moviesFiltered: String
+      moviesFiltered: String,
+      stampaCheck: Boolean
   },
 
   data() {
