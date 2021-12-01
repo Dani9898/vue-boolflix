@@ -1,9 +1,22 @@
 <template>
   <div id="app">
   
-    <Header />
 
-    <Movies />
+    <Header 
+      :moviesList="movies" 
+      @moviesFiltered="getMoviesFiltered"
+
+    />
+
+  <main>
+
+    <Movies 
+    :moviesFiltered="moviesFilter"
+    @getMoviesList="getMovies" 
+
+    />
+
+  </main>
 
   </div>
 </template>
@@ -17,6 +30,20 @@ export default {
   components: {
     Header,
     Movies
+  },
+  data() {
+    return {
+      movies: [],
+      moviesFilter: ""
+    }
+  },
+  methods: {
+    getMovies(items) {
+      this.movies = items
+    },
+    getMoviesFiltered(items) {
+      this.moviesFilter = items
+    }
   }
 }
 </script>
