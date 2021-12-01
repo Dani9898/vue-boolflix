@@ -1,6 +1,11 @@
 <template>
-  <div class="movies" v-if="moviesFiltered !== ''">
-      <Movie v-for="movie, i in filteredMovies" :key="i" :details="movie" />
+  <div class="movies" v-if="moviesFiltered !== '' ">
+
+    <Movie v-for="movie, i in filteredMovies" 
+    :key="i" 
+    :movie="movie" 
+    />
+
   </div>
 </template>
 
@@ -21,7 +26,7 @@ export default {
 
   data() {
       return {
-          movies: [],
+          movies: []
       }
   },
 
@@ -31,10 +36,6 @@ export default {
 
   computed: {
       filteredMovies() {
-          if (this.moviesFiltered === "") {
-              return this.movies
-          }
-
           return this.movies.filter(
               (item) => item.title.toLowerCase().includes(this.moviesFiltered.toLowerCase())
           )
@@ -46,14 +47,10 @@ export default {
           axios
           .get("https://api.themoviedb.org/3/search/movie?api_key=fdd22c25d6f7adc3abaeb990d06e6350&language=it-IT&query=ritorno%20al%20futuro&include_adult=false")
           .then((res) => {
-              this.movies = res.data.results;
-              this.$emit("getMoviesList", this.movies);
-          }) 
-      },
-
-
-
-
+            this.movies = res.data.results;
+            this.$emit("giveMovies", this.movies);
+          });
+        },
 
   }
 

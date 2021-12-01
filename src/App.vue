@@ -4,7 +4,7 @@
 
     <Header 
       :moviesList="movies"
-      @moviesFiltered="getMoviesFiltered"
+      @giveMoviesFiltered="getMoviesFiltered"
 
     />
 
@@ -12,7 +12,7 @@
 
     <Movies 
     :moviesFiltered="moviesFilter"
-    @getMoviesList="getMovies" 
+    @giveMovies="getMovies" 
 
     />
 

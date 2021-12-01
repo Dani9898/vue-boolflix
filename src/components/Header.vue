@@ -5,7 +5,7 @@
 
     <div class="search-bar">
       <input v-model="movieFilter" type="text">
-      <button @click="$emit('moviesFiltered', movieFilter)">Search</button>
+      <button @click="$emit('giveMoviesFiltered', movieFilter)">Search</button>
     </div>
 
   </header>
