@@ -17,7 +17,6 @@ export default {
 
   props: {
       moviesFiltered: String,
-      stampaCheck: Boolean
   },
 
   data() {
