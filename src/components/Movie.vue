@@ -3,9 +3,13 @@
 
       <span>TITOLO: {{movie.title}}</span>
       <span>TITOLO ORIGINALE: {{movie.original_title}}</span>
-      <span v-if="movie.original_language === 'it' ">LINGUA ORIGINALE: <img src="../assets/img/italyflag.jpg" alt="italian"></span>
-      <span v-else>LINGUA ORIGINALE: <img src="../assets/img/engflag.png" alt="italian"></span>
-      <span class="hidden" :class="!languages.includes(movie.original_language) ? 'show' : '' ">LINGUA ORIGINALE: {{movie.original_language}}</span> 
+      <div>LINGUA: 
+        <img class="flag" v-if="getLangImg(movie) !== 'non trovato' " :src="require(`../assets/img/${getLangImg(movie)}`)" :alt="movie.original_language"> 
+        <span v-if="getLangImg(movie) === 'non trovato' ">
+          {{movie.original_language}}
+        </span>
+      </div>
+      
       <span>VOTO: {{movie.vote_average}}</span>
 
   </div>
@@ -17,9 +21,15 @@ export default {
   props: {
       movie: Object,
   },
-  data(){
-    return {
-      languages: ["it", "en"]
+  methods: {
+    getLangImg(item) {
+      if(item.original_language === "it") {
+        return "italyflag.jpg"
+      } else if (item.original_language === "en") {
+        return "engflag.png"
+      } else {
+        return "non trovato"
+      }
     }
   }
 
@@ -41,10 +51,10 @@ export default {
       
       span {
         margin: 3px 0;
+      }
 
-          img {
-            width: 20px;
-          };
+      .flag {
+        width: 20px;
       }
       
       .hidden {

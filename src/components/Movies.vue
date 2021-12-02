@@ -26,6 +26,9 @@ export default {
 
   data() {
       return {
+          apiRitornoFuturo: "https://api.themoviedb.org/3/search/movie?api_key=fdd22c25d6f7adc3abaeb990d06e6350&language=it-IT&query=ritorno%20al%20futuro&include_adult=false",
+          apiHP: "https://api.themoviedb.org/3/search/movie?api_key=fdd22c25d6f7adc3abaeb990d06e6350&language=it-IT&query=harry%20potter&include_adult=false",
+          apiBruceLee: "https://api.themoviedb.org/3/search/movie?api_key=fdd22c25d6f7adc3abaeb990d06e6350&language=it-IT&query=bruce%20lee&include_adult=false",
           movies: []
       }
   },
@@ -45,7 +48,7 @@ export default {
   methods: {
       getMovie() {
           axios
-          .get("https://api.themoviedb.org/3/search/movie?api_key=fdd22c25d6f7adc3abaeb990d06e6350&language=it-IT&query=ritorno%20al%20futuro&include_adult=false")
+          .get(this.apiBruceLee)
           .then((res) => {
             this.movies = res.data.results;
             this.$emit("giveMovies", this.movies);
@@ -63,6 +66,7 @@ export default {
     width: 70%;
     margin: auto;
     display: flex;
+    flex-wrap: wrap;
     
 }
 </style>
