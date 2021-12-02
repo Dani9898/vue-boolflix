@@ -3,17 +3,15 @@
   
 
     <Header 
-      :moviesList="movies"
-      @giveMoviesFiltered="getMoviesFiltered"
-
+      @giveMovies="getMovies" 
+      @giveSeries="getSeries"
     />
 
   <main>
 
     <Movies 
-    :moviesFiltered="moviesFilter"
-    @giveMovies="getMovies" 
-
+    :movies="movies"
+    :series="series"
     />
 
   </main>
@@ -34,15 +32,15 @@ export default {
   data() {
     return {
       movies: [],
-      moviesFilter: ""
+      series: [],
     }
   },
   methods: {
     getMovies(items) {
       this.movies = items
     },
-    getMoviesFiltered(items) {
-      this.moviesFilter = items
+    getSeries(items) {
+      this.series = items
     }
   }
 }
