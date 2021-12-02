@@ -1,8 +1,10 @@
 <template>
   <div class="movie">
 
-      <span>TITOLO: {{movie.title}}</span>
-      <span>TITOLO ORIGINALE: {{movie.original_title}}</span>
+      <span v-if="movie.hasOwnProperty('title')">TITOLO: {{movie.title}}</span>
+      <span v-else>TITOLO: {{movie.name}}</span>
+      <span v-if="movie.hasOwnProperty('original_title')">TITOLO ORIGINALE: {{movie.original_title}}</span>
+      <span v-else>TITOLO ORIGINALE: {{movie.original_name}}</span>
       <div>LINGUA: 
         <img class="flag" v-if="getLangImg(movie) !== 'non trovato' " :src="require(`../assets/img/${getLangImg(movie)}`)" :alt="movie.original_language"> 
         <span v-if="getLangImg(movie) === 'non trovato' ">

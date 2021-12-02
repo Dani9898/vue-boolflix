@@ -1,9 +1,9 @@
 <template>
   <div class="movies">
 
-    <Movie v-for="movie, i in movies" 
+    <Movie v-for="item, i in mix" 
     :key="i" 
-    :movie="movie" 
+    :movie="item" 
     />
 
   </div>
@@ -20,8 +20,7 @@ export default {
       Movie
   },
   props: {
-      movies: Array,
-      series: Array
+      mix: Array
   }
 
 }

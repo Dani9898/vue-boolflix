@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  
+  <button @click="prova">asddsaasasdd</button>
 
     <Header 
       @giveMovies="getMovies" 
@@ -10,8 +10,7 @@
   <main>
 
     <Movies 
-    :movies="movies"
-    :series="series"
+    :mix="mixAll"
     />
 
   </main>
@@ -35,12 +34,22 @@ export default {
       series: [],
     }
   },
+
+  computed: {
+    mixAll() {
+      return [...this.movies, ...this.series]
+    }
+  },
+
   methods: {
     getMovies(items) {
       this.movies = items
     },
     getSeries(items) {
       this.series = items
+    },
+    prova(){
+      console.log(this.mixAll);
     }
   }
 }
