@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-  <button @click="prova">asddsaasasdd</button>
 
     <Header 
       @giveMovies="getMovies" 
@@ -47,9 +46,6 @@ export default {
     },
     getSeries(items) {
       this.series = items
-    },
-    prova(){
-      console.log(this.mixAll);
     }
   }
 }
