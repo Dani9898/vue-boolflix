@@ -4,6 +4,7 @@
     <Header 
       @giveMovies="getMovies" 
       @giveSeries="getSeries"
+      @giveQuery="getQuery"
     />
 
   <main>
@@ -31,12 +32,18 @@ export default {
     return {
       movies: [],
       series: [],
+      query: ""
     }
   },
 
   computed: {
     mixAll() {
-      return [...this.movies, ...this.series]
+      if(this.query.trim() !== "") {
+        return [...this.movies, ...this.series]
+      } else {
+        return []
+      }
+      
     }
   },
 
@@ -46,6 +53,9 @@ export default {
     },
     getSeries(items) {
       this.series = items
+    },
+    getQuery(item) {
+      this.query = item
     }
   }
 }

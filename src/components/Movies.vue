@@ -1,7 +1,8 @@
 <template>
   <div class="movies">
 
-    <Movie v-for="item, i in mix" 
+    <Movie 
+    v-for="item, i in mix" 
     :key="i" 
     :movie="item" 
     />

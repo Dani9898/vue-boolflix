@@ -21,7 +21,7 @@
     <div class="vote">
       <span>Voto: </span>
         <span><i v-for="i in getVoteForFullStar(movie)" :key="i" class="fas fa-star full"></i></span>
-        <span><i v-for="i in getVoteForEmptyStar(movie)" :key="i" class="fas fa-star"></i></span>
+        <span><i v-for="i in getVoteForEmptyStar()" :key="i" class="fas fa-star"></i></span>
     </div>
     
 
@@ -42,6 +42,12 @@ export default {
       movie: Object,
   },
 
+  data() {
+    return {
+      fullStars: 0
+    }
+  },
+
   methods: {
     getLangImg(item) {
       if(item.original_language === "it") {
@@ -54,13 +60,12 @@ export default {
     },
 
     getVoteForFullStar(item) {
-      let fullStars = Math.floor(item.vote_average / 2);
-      return fullStars
+      this.fullStars = Math.floor(item.vote_average / 2);
+      return this.fullStars
     },
 
-    getVoteForEmptyStar(item) {
-      let fullStars = Math.floor(item.vote_average / 2);
-      let emptyStars = 5 - fullStars;
+    getVoteForEmptyStar() {
+      let emptyStars = 5 - this.fullStars;
       return emptyStars
     }
   }
