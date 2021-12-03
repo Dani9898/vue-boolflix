@@ -18,10 +18,13 @@
       </span>
     </div>
   
-    <span>Voto: 
-      <i v-for="i in getVoteForFullStar(movie)" :key="i" class="fas fa-star full"></i>
-      <i v-for="i in getVoteForEmptyStar(movie)" :key="i" class="fas fa-star"></i>
-    </span>
+    <div class="vote">
+      <span>Voto: </span>
+        <span><i v-for="i in getVoteForFullStar(movie)" :key="i" class="fas fa-star full"></i></span>
+        <span><i v-for="i in getVoteForEmptyStar(movie)" :key="i" class="fas fa-star"></i></span>
+    </div>
+    
+
 
     <span v-if="movie.overview !== '' ">Overview: {{movie.overview}}</span>
     <span v-else></span>
@@ -112,9 +115,14 @@ export default {
           visibility: visible !important;
         }
 
-        .full {
-          color:rgb(221, 189, 10)
+        .vote {
+          display: flex;
+
+           .full {
+             color:rgb(221, 189, 10)
         }
+        }
+        
       }
 }
 .movie:hover .info {

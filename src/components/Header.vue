@@ -29,21 +29,20 @@ export default {
 
   methods: {
     getMovies() {
-          axios
-          .get(`https://api.themoviedb.org/3/search/movie?api_key=fdd22c25d6f7adc3abaeb990d06e6350&language=it-IT&query=${this.query}&include_adult=false`)
-          .then((res) => {
-            this.movies = res.data.results;
-            this.$emit("giveMovies", this.movies);
-          });
+      axios
+      .get(`https://api.themoviedb.org/3/search/movie?api_key=fdd22c25d6f7adc3abaeb990d06e6350&language=it-IT&query=${this.query}&include_adult=false`)
+      .then((res) => {
+        this.movies = res.data.results;
+        this.$emit("giveMovies", this.movies);
+      });
 
-          axios
-          .get(`https://api.themoviedb.org/3/search/tv?api_key=fdd22c25d6f7adc3abaeb990d06e6350&language=it-IT&query=${this.query}&include_adult=false`)
-          .then((res) => {
-            this.series = res.data.results;
-            this.$emit("giveSeries", this.series);
-          });
-
-        },
+      axios
+      .get(`https://api.themoviedb.org/3/search/tv?api_key=fdd22c25d6f7adc3abaeb990d06e6350&language=it-IT&query=${this.query}&include_adult=false`)
+      .then((res) => {
+        this.series = res.data.results;
+        this.$emit("giveSeries", this.series);
+      });
+    }
   }
 }
 </script>
