@@ -5,7 +5,7 @@
     :key="i" 
     :movie="item" 
     />
-
+    
   </div>
 </template>
 

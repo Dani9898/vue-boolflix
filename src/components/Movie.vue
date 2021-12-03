@@ -17,8 +17,12 @@
         {{movie.original_language}}
       </span>
     </div>
-    
-    <span>Voto: {{movie.vote_average}}</span>
+  
+    <span>Voto: 
+      <i v-for="i in getVoteForFullStar(movie)" :key="i" class="fas fa-star full"></i>
+      <i v-for="i in getVoteForEmptyStar(movie)" :key="i" class="fas fa-star"></i>
+    </span>
+
     <span v-if="movie.overview !== '' ">Overview: {{movie.overview}}</span>
     <span v-else></span>
   </div>
@@ -30,9 +34,11 @@
 <script>
 export default {
   name: 'Movie',
+
   props: {
       movie: Object,
   },
+
   methods: {
     getLangImg(item) {
       if(item.original_language === "it") {
@@ -42,14 +48,22 @@ export default {
       } else {
         return "non trovato"
       }
+    },
+
+    getVoteForFullStar(item) {
+      let fullStars = Math.floor(item.vote_average / 2);
+      return fullStars
+    },
+
+    getVoteForEmptyStar(item) {
+      let fullStars = Math.floor(item.vote_average / 2);
+      let emptyStars = 5 - fullStars;
+      return emptyStars
     }
   }
-
-
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .movie {
     color: #fff;
@@ -96,6 +110,10 @@ export default {
 
         .show {
           visibility: visible !important;
+        }
+
+        .full {
+          color:rgb(221, 189, 10)
         }
       }
 }

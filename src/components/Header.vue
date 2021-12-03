@@ -42,7 +42,6 @@ export default {
             this.series = res.data.results;
             this.$emit("giveSeries", this.series);
           });
-    
 
         },
   }
